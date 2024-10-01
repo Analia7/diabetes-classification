@@ -15,3 +15,6 @@ y = cdc_diabetes_health_indicators.data.targets
 
 # Split the dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+def test_random_forest():
+    return
