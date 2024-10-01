@@ -16,14 +16,18 @@ y = cdc_diabetes_health_indicators.data.targets
 # Split the dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-def test_random_forest(n_estimators, criterion, max_depth, min_samples_split, min_samples_leaf, max_features, bootstrap, n_jobs, max_samples, class_weight, oob_score, ):
+def test_random_forest(n_estimators, criterion, max_depth, min_samples_split, min_samples_leaf, max_features, bootstrap, n_jobs, max_samples, class_weight, oob_score):
     return
 
-def test_decision_tree(criterion, splitter, max_depth, min_samples_split, min_samples_leaf, max_features, max_leaf_nodes=2, min_impurity_decrease, class_weight, ccp_alpha):
+def test_decision_tree(criterion, splitter, max_depth, min_samples_split, min_samples_leaf, max_features, max_leaf_nodes=2, min_impurity_decrease, class_weight, ccp_alpha, n_trees):
     """
+    Create a decision tree digital twin model to determine whether a patient is diabetic or not.
+    Output:
+        (accuracy, timetaken) - performance metrics of the decision tree given the inputed hyperparams
     NOTE
     ----
     max_leaf_nodes is set to 2 since the data used has 2 potential classifications: diabetic or not diabetic
-
     """
+    # create the decision tree model
+    # n_trees decision trees will be created to deal with the randomness and the average performance will be selected
     return
