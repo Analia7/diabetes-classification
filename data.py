@@ -14,3 +14,6 @@ print("y", y)
   
 # variable information 
 #print(cdc_diabetes_health_indicators.variables) 
+
+# Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
