@@ -17,7 +17,7 @@ The input arguments we are testing for the `DecisionTreeClassifier` are the foll
 | `criterion`                  | 'gini' or 'entropy'                        | 'gini' and 'entropy' (2 values)                         |
 | `min_samples_split`          | int or % (float value 0.0-1.0)             | 10 values evenly spaced between 0.0 and 1.0              |
 | `min_samples_leaf`           | int or % (float value 0.0-1.0)             | 10 values evenly spaced between 0.0 and 1.0              |
-| `min_weight_fractional`      | int or % (float value 0.0-1.0)             | 10 values evenly spaced between 0.0 and 1.0              |
+| `min_weight_fraction_leaf`      | int or % (float value 0.0-1.0)             | 10 values evenly spaced between 0.0 and 1.0              |
 | `max_features`               | % (float value 0.0-1.0), 'auto', 'sqrt' or 'log2' | 10 values evenly spaced between 0.0 and 1.0, 'sqrt' and 'log2' (12 values) |
 | `min_impurity_decrease`      | float                                       | 10 values                                                |
 | `class_weight`               | None or 'balanced'                         | None and 'balanced' (2 values)                          |

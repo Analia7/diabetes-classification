@@ -25,9 +25,14 @@ def get_parser():
     parser.add_argument('-o', type=str, dest='output_path', default='./')
     parser.add_argument('--n_jobs', type=int, default=1)
 
-    parser.add_argument('--alg', dest='algorithm', type=str, choices=['pc', 'nc'])
-    parser.add_argument('--thr', dest='threshold', type=float, default=0.5)
-    parser.add_argument('--pt', dest='pair_test', type=str, choices=['anm', 'bivariate_fit', 'cds', 'gnn', 'igci', 'reci'])
+    parser.add_argument('--c', dest='criterion', type=str, choices=['gini', 'entropy'])
+    parser.add_argument('--mss', dest='min_samples_split', type=float)
+    parser.add_argument('--msl', dest='min_samples_leaf', type=float)
+    parser.add_argument('--mwfl', dest='min_weight_fraction_leaf', type=float)
+    parser.add_argument('--mf', dest='max_features', type=str) # need to parse if string contains a number (to convert to float) or keep as string
+    parser.add_argument('--mid', dest='min_impurity_decrease', type=float)
+    parser.add_argument('--cw', dest='class_weight', type=str, choices=['None', 'balanced']) # need to parse to convert `None` to None
+    parser.add_argument('--s', dest='splitter', type=str, choices=['best', 'random'])
 
     return parser
 
