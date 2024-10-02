@@ -6,7 +6,7 @@ from sklearn.datasets import load_iris
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from scipy.stats import mode  
 
-def test_decision_tree(X_train, y_train, X_test, y_test, criterion, splitter, min_samples_split, min_samples_leaf, max_features, min_impurity_decrease, class_weight, ccp_alpha, n_trees, max_leaf_nodes=2):
+def test_decision_tree(X_train, y_train, X_test, y_test, criterion, splitter, min_samples_split, min_samples_leaf, min_weight_fraction_leaf, max_features, min_impurity_decrease, class_weight, ccp_alpha, n_trees, max_leaf_nodes=2):
     """
     Create a decision tree digital twin model to determine whether a patient is diabetic or not.
     Output:
@@ -24,7 +24,7 @@ def test_decision_tree(X_train, y_train, X_test, y_test, criterion, splitter, mi
     # create and fit the tree models and use them to predict the values of y for X_test
     for i in range(n_trees):
         decision_trees[i] = DecisionTreeClassifier(criterion=criterion, splitter=splitter, min_samples_split=min_samples_split,
-                                                      min_samples_leaf=min_samples_leaf, max_features=max_features, max_leaf_nodes=max_leaf_nodes,
+                                                      min_samples_leaf=min_samples_leaf, min_weight_fraction_leaf=min_weight_fraction_leaf, max_features=max_features, max_leaf_nodes=max_leaf_nodes,
                                                       min_impurity_decrease=min_impurity_decrease, class_weight=class_weight, ccp_alpha=ccp_alpha)
         decision_trees[i].fit(X_train, y_train)
         max_depths[i] = decision_trees[i].get_depth()
