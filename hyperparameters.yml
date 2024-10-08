@@ -1,0 +1,67 @@
+hyperparameters:
+  criterion:
+    - 'gini'
+    - 'entropy'
+  min_samples_split:
+    - 0.0
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    - 0.9
+  min_samples_leaf:
+    - 0.0
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    - 0.9
+  min_weight_fractional:
+    - 0.0
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    - 0.9
+  max_features:
+    - "0.1"
+    - "0.2"
+    - "0.3"
+    - "0.4"
+    - "0.5"
+    - "0.6"
+    - "0.7"
+    - "0.8"
+    - "0.9"
+    - "1.0"
+    - 'sqrt'
+    - 'log2'
+  min_impurity_decrease:
+    - 0.0
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    - 0.9
+  class_weight:
+    - 'None'
+    - 'balanced'
+  splitter:
+    - 'best'
+    - 'random'
