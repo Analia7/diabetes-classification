@@ -1,7 +1,7 @@
 hyperparameters:
   criterion:
-    - 'gini'
-    - 'entropy'
+    - gini
+    - entropy
   min_samples_split:
     - 0.0
     - 0.1
@@ -36,18 +36,18 @@ hyperparameters:
     - 0.8
     - 0.9
   max_features:
-    - "0.1"
-    - "0.2"
-    - "0.3"
-    - "0.4"
-    - "0.5"
-    - "0.6"
-    - "0.7"
-    - "0.8"
-    - "0.9"
-    - "1.0"
-    - 'sqrt'
-    - 'log2'
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
+    - 0.6
+    - 0.7
+    - 0.8
+    - 0.9
+    - 1.0
+    - sqrt
+    - log2
   min_impurity_decrease:
     - 0.0
     - 0.1
@@ -60,8 +60,16 @@ hyperparameters:
     - 0.8
     - 0.9
   class_weight:
-    - 'None'
-    - 'balanced'
+    - None
+    - balanced
+  ccp_alpha:
+    - 0
+    - 0.0001
+    - 0.001
+    - 0.01
+    - 0.1
+  n_trees:
+    - 7
   splitter:
-    - 'best'
-    - 'random'
+    - best
+    - random
