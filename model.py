@@ -1,6 +1,6 @@
 # Importing necessary libraries
 import numpy as np
-from sklearn.ensemble import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
 from scipy.stats import mode  
 from sklearn.base import BaseEstimator, ClassifierMixin
@@ -8,7 +8,7 @@ from sklearn.base import BaseEstimator, ClassifierMixin
 class CustomDecisionTreeModel(BaseEstimator, ClassifierMixin):
     """
     Create a decision tree digital twin model to determine whether a patient is diabetic or not.
-    Output:
+    Output: scipy
         (accuracy, timetaken) - performance metrics of the decision tree given the inputed hyperparams
     NOTE
     ----
