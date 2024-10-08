@@ -39,7 +39,7 @@ performance_scorer = make_scorer(custom_scorer_func, greater_is_better=True)
 
 decision_tree_testing = CustomDecisionTreeModel()
 
-grid_search = GridSearchCV(estimator=decision_tree_testing, param_grid=hparam_grid, scoring=performance_scorer, cv=5)
+grid_search = GridSearchCV(estimator=decision_tree_testing, param_grid=hparam_grid, scoring=performance_scorer, cv=1, refit=False)
 grid_search.fit(X_train, y_train)
 
 # export to .csv file
