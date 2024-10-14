@@ -1,9 +1,7 @@
 import yaml
-import numpy as np
 import pandas as pd
-from sklearn.model_selection import GridSearchCV, train_test_split, ParameterGrid
-from sklearn.metrics import make_scorer
-from model import CustomDecisionTreeModel, custom_scorer
+from sklearn.model_selection import train_test_split, ParameterGrid
+from model import CustomDecisionTreeModel
 from joblib import Parallel, delayed
 from ucimlrepo import fetch_ucirepo 
 
@@ -38,7 +36,7 @@ def evaluate_model(hparams, X_train, y_train, X_test, y_test):
         class_weight=hparams['class_weight'],
         ccp_alpha=hparams['ccp_alpha'],
         n_trees=hparams['n_trees'],
-        max_leaf_nodes=hparams['max_leaf_nodes']
+        max_leaf_nodes=hparams['max_leaf_nodes'] # our dataset only has two options 1: diabetic (including pre-diabetic) and 0: not diabetic
     )
     
     # Fit the model
