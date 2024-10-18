@@ -1,7 +1,6 @@
-# Importing necessary libraries
 import numpy as np
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
 from scipy.stats import mode  
 from sklearn.base import BaseEstimator, ClassifierMixin
 
@@ -53,14 +52,34 @@ class CustomDecisionTreeModel(BaseEstimator, ClassifierMixin):
         return y_pred.flatten()
 
     def score(self, X, y):
-        # Get accuracy
+        # Get predictions
         y_pred = self.predict(X)
+        
+        # Calculate accuracy
         accuracy = accuracy_score(y, y_pred)
+        
+        # Calculate precision, recall, f1-score, and ROC-AUC
+        precision = precision_score(y, y_pred, zero_division=0)
+        recall = recall_score(y, y_pred)
+        f1 = f1_score(y, y_pred, zero_division=0)
+        
+        # Check if the problem is binary classification before calculating ROC-AUC
+        if len(np.unique(y)) == 2:
+            roc_auc = roc_auc_score(y, y_pred)
+        else:
+            roc_auc = None  # ROC-AUC is only applicable for binary classification
         
         # Get average max depth
         avg_max_depth = np.mean(self.max_depths_)
         
-        return accuracy, avg_max_depth
+        return {
+            'accuracy': accuracy,
+            'precision': precision,
+            'recall': recall,
+            'f1_score': f1,
+            'roc_auc': roc_auc,
+            'avg_max_depth': avg_max_depth
+        }
 
 # in case I need the custom scorer
 def custom_scorer(accuracy, max_depth, max_possible_depth=1000, alpha=0.7, beta=0.3):
@@ -80,3 +99,4 @@ def custom_scorer(accuracy, max_depth, max_possible_depth=1000, alpha=0.7, beta=
     normalized_max_depth = max_depth / max_possible_depth
     score = alpha * accuracy - beta * normalized_max_depth
     return score
+

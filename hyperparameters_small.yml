@@ -3,56 +3,32 @@ hyperparameters:
     - gini
     - entropy
   min_samples_split:
-    - 0.1
-    - 0.2
-    - 0.3
-    - 0.4
-    - 0.5
-    - 0.6
-    - 0.7
-    - 0.8
-    - 0.9
+    - 2
+    - 5
+    - 10
+    - 25
+    - 50
+    - 100
   min_samples_leaf:
-    - 0.1
-    - 0.2
-    - 0.3
-    - 0.4
-    - 0.5
-    - 0.6
-    - 0.7
-    - 0.8
-    - 0.9
+    - 2
+    - 5
+    - 10
+    - 25
+    - 50
+    - 100
   min_weight_fraction_leaf:
     - 0.0
-    - 0.1
-    - 0.2
-    - 0.3
-    - 0.4
+    - 0.25
     - 0.5
   max_features:
     - 0.1
-    - 0.2
-    - 0.3
-    - 0.4
-    - 0.5
-    - 0.6
-    - 0.7
-    - 0.8
-    - 0.9
     - 1.0
     - sqrt
     - log2
   min_impurity_decrease:
     - 0.0
+    - 0.001
     - 0.1
-    - 0.2
-    - 0.3
-    - 0.4
-    - 0.5
-    - 0.6
-    - 0.7
-    - 0.8
-    - 0.9
   class_weight:
     - null # or use ~ for writing None as you would in python
     #- balanced

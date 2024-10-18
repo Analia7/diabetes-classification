@@ -54,8 +54,8 @@ hyperparameters:
     - 0.8
     - 0.9
   class_weight:
-    - null # or use ~ for writing None as you would in python
-    #- balanced
+    - null # or use ~ for witing None as you would in python
+    - balanced
   ccp_alpha:
     - 0
     - 0.0001
@@ -63,7 +63,7 @@ hyperparameters:
     - 0.01
     - 0.1
   n_trees:
-    - 5
+    - 7
   splitter:
     - best
     - random
