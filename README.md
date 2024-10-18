@@ -39,6 +39,13 @@ So the dataset we will generate will contain a total of 10 columns.
 ### A note on randomness
 Every time an instance of a `DecisionTreeClassifier` is created there is some inherent randomness in how it is created (unless a `random_state` is specified which will not be the case in this repository). Thus, in order to deal with this randomness so that the data produced is reproducible to some extent every combination will create and train a total of `n_trees` `DecisionTreeClassifier` models and the there will be a majority voting procedure to pick the mode prediction as the final prediction of our combination of parameters. The `n_trees` will be fixed to 7 in this repository, but the code allows for anyone interested to choose a different number of `DecisionTreeClassifier` instances to be created per hyperparameter combination.
 
+### A note on the imbalance in the data
+The data visualization process showed that the data is heavily skewed towards class 0 (not diabetic), as seen below, and hence it is important to deal with this issue.
+![Data distribution visualization](class_distribution.png)
+The first attempt at running `grid_search.py` showed that the `class_weights` parameter of the `DecisionTree` doesn't work very well. In particular, setting this value to `None` favors the majority class to much (giving us an accuracy of around 86% and setting the value to `balanced` favors the minority class too much (giving us an accuracy of 14%). Thus, `SMOTE` will be use to create synthetic samples of the minority class when resampling data before feeding this data to the `DecisionTree`.
+
+In light of this discovery, new performance measures will be added to obtain more information on the correctness of the model.
+
 # Footnotes
 1. By optimally chosen we mean the following. Causal discovery will attempt to recover the causal relationships between the input arguments a user may give to the `DecisionTreeClassifier` and how these affect the performance of the `DecisionTreeClassifier` (performance including accuracy and speed). Given this, we will be able to choose a narrower subset of hyperparameter values to try to find the optimal combination of hyperparameters that contributes to peak performance.
 2. Note that we will actually train several `DecisionTreeClassifier` models per combination to account for the randomness that follows the creating of a `DecisionTreeClassifier` instance. More on this on the next few paragraphs.
