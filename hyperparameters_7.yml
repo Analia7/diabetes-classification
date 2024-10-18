@@ -63,7 +63,7 @@ hyperparameters:
     - 0.01
     - 0.1
   n_trees:
-    - 5
+    - 7
   splitter:
     - best
     - random

@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split, ParameterGrid
 from model import CustomDecisionTreeModel
 from joblib import Parallel, delayed
 from ucimlrepo import fetch_ucirepo 
+from tqdm import tqdm
 
 def load_yml(file_path):
     """
@@ -36,7 +37,7 @@ def evaluate_model(hparams, X_train, y_train, X_test, y_test):
         class_weight=hparams['class_weight'],
         ccp_alpha=hparams['ccp_alpha'],
         n_trees=hparams['n_trees'],
-        max_leaf_nodes=hparams['max_leaf_nodes'] # our dataset only has two options 1: diabetic (including pre-diabetic) and 0: not diabetic
+        max_leaf_nodes=hparams['max_leaf_nodes'] # as our dataset only has two options 1: diabetic (including pre-diabetic) and 0: not diabetic
     )
     
     # Fit the model
@@ -76,9 +77,10 @@ def manual_grid_search(X_train, y_train, X_test, y_test, param_grid, output_csv,
     Outputs:
     - Writes the grid search results into the CSV file specified by `output_csv`.
     """
+    param_list = list(ParameterGrid(param_grid))  # Convert to list for tqdm
     # Perform parallelized evaluation of all hyperparameter combinations
     results = Parallel(n_jobs=n_jobs)(delayed(evaluate_model)(params, X_train, y_train, X_test, y_test) 
-                                      for params in ParameterGrid(param_grid))
+                                      for params in tqdm(param_list, desc="Grid Search Progress"))
     
     # Convert the results to a DataFrame and write to CSV
     results_df = pd.DataFrame(results)

@@ -1,0 +1,32 @@
+hyperparameters:
+  criterion:
+    - gini
+
+  min_samples_split:
+    - 0.1
+
+  min_samples_leaf:
+    - 0.1
+
+  min_weight_fraction_leaf:
+    - 0.0
+
+  max_features:
+    - 0.1
+
+  min_impurity_decrease:
+    - 0.0
+
+  class_weight:
+    - null # or use ~ for witing None as you would in python
+
+  ccp_alpha:
+    - 0
+
+  n_trees:
+    - 5
+  splitter:
+    - best
+
+  max_leaf_nodes:
+    - 2

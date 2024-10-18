@@ -1,0 +1,2 @@
+criterion,splitter,min_samples_split,min_samples_leaf,min_weight_fraction_leaf,max_features,min_impurity_decrease,class_weight,ccp_alpha,n_trees,max_leaf_nodes,accuracy,max_depth
+gini,best,0.1,0.1,0.0,0.1,0.0,,0,5,2,0.8620440449910649,1.0
