@@ -27,7 +27,9 @@ The input arguments we are testing for the `DecisionTreeClassifier` are the foll
 Which leaves us with a total of 960,000 combinations to try.
 
 ### Performance of each model
-Each of this combinations will be used to create a `DecisionTreeClassifier` instance and this model will be trained on the CDC Diabetes Indicator dataset.<sup>2<sup> The performance of the tree will be measured taking into account the values below:
+Each of this combinations will be used to create a `DecisionTreeClassifier` instance and this model will be trained on the CDC Diabetes Indicator dataset.<sup>2<sup>
+
+The performance of the tree will be measured taking into account the values below:
 
 | Performance metric | Measured as | Reason why |
 |----------|----------|----------|
@@ -42,6 +44,7 @@ Every time an instance of a `DecisionTreeClassifier` is created there is some in
 ### A note on the imbalance in the data
 The data visualization process showed that the data is heavily skewed towards class 0 (not diabetic), as seen below, and hence it is important to deal with this issue.
 ![Data distribution visualization](class_distribution.png)
+
 The first attempt at running `grid_search.py` showed that the `class_weights` parameter of the `DecisionTree` doesn't work very well. In particular, setting this value to `None` favors the majority class to much (giving us an accuracy of around 86% and setting the value to `balanced` favors the minority class too much (giving us an accuracy of 14%). Thus, `SMOTE` will be use to create synthetic samples of the minority class when resampling data before feeding this data to the `DecisionTree`.
 
 In light of this discovery, new performance measures will be added to obtain more information on the correctness of the model.
