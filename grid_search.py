@@ -79,8 +79,10 @@ def manual_grid_search(X_train, y_train, X_test, y_test, param_grid, output_csv,
     - Writes the grid search results into the CSV file specified by `output_csv`.
     """
     param_list = list(ParameterGrid(param_grid))  # Convert to list for tqdm
+    param_list = list(ParameterGrid(param_grid))  # Convert to list for tqdm
     # Perform parallelized evaluation of all hyperparameter combinations
     results = Parallel(n_jobs=n_jobs)(delayed(evaluate_model)(params, X_train, y_train, X_test, y_test) 
+                                      for params in tqdm(param_list, desc="Grid Search Progress"))
                                       for params in tqdm(param_list, desc="Grid Search Progress"))
     
     # Convert the results to a DataFrame and write to CSV
